@@ -1,19 +1,42 @@
-/* Styles de base */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Lora', serif, Arial, Helvetica, sans-serif; 
+    color: #333;
+    background-color: white;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
 }
 
-/* En-tête */
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+p {
+    font-size: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h2, h3 {
+    color: #333;
+}
+
+h2 {
     text-align: center;
 }
 
-/* Navigation */
+header {
+    background: black;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -21,186 +44,213 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin-right: 20px;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #fff;
+    color: white;
     font-weight: bold;
 }
 
-/* Contenu principal */
 main {
     padding: 20px;
+    margin: 20px 0;
 }
 
-/* Ajoutez de l'espace entre les sections */
+.portfolio-container,
+#presentation p,
+#competences p {
+    text-align: center;
+    background-color: #fefee5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 50px;
+}
+
 section {
-    background-color: #fff;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 40px;
+    margin: 50px;
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+.project, .formation-item {
+    background: #fefee5;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 50px;
     padding: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
 }
 
-section h2 {
-    text-align: center;
-}
-
-
-/* Style pour les sections Expérience et Formation */
-#experience,
-#formation {
-    text-align: center;
-    padding: 20px;
-}
-
-.project,
-.formation-item {
+.portfolio-container {
     display: flex;
-    margin: 20px;
-}
-
-.left {
-    flex: 30%; /* Partie de gauche prend 30% de la largeur */
-    text-align: left;
-}
-
-.right {
-    flex: 70%; /* Partie de droite prend le reste de l'espace disponible */
-    text-align: left;
-}
-
-.divider {
-    width: 1px;
-    background-color: #ccc;
-    margin: 0 20px;
-}
-
-/* Ajoutez d'autres styles CSS au besoin */
-
-
-
-
-
-/* Ajoutez d'autres styles CSS au besoin */
-
-
-
-/* Style pour la section Portfolio */
-#portfolio {
-    text-align: center;
-    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 20px;
 }
 
 .portfolio-item {
-    display: inline-block;
-    margin: 30px; /* Augmentation de la marge autour de chaque image */
-    width: 300px;
-    height: 200px;
-    overflow: hidden;
+    flex: 0 1 calc(33.333% - 20px);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.portfolio-item a {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
 }
 
 .portfolio-item img {
-    max-width: 100%;
-    height: auto;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: block;
+    transition: all 0.3s ease;
 }
 
 .portfolio-item p {
-    margin-top: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    text-align: center;
+    width: 80%;
+    margin: 0;
 }
 
-
-/* Style pour la section "Contact" */
-footer #contact {
-    background-color: #333; /* Couleur de fond similaire au header */
-    color: #fff; /* Couleur du texte en blanc */
-    padding: 20px 0; /* Espacement intérieur de la section */
-    text-align: center; /* Centrer le texte */
-    border: none;
-    height: auto;
+.portfolio-item:hover p {
+    opacity: 1;
+    text-decoration: underline;
 }
 
-footer #contact h2 {
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.portfolio-item:hover::after {
+    opacity: 1;
+}
+
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer h2 {
     color: white;
 }
 
 
-/* Style pour le bouton LinkedIn (moderne) */
-#contact button {
-    background-color: #0077B5; /* Couleur de fond */
-    color: #fff; /* Couleur du texte */
-    padding: 10px 20px; /* Espacement intérieur du bouton */
-    text-decoration: none; /* Supprime le soulignement du lien */
-    border: none; /* Supprime la bordure du bouton */
-    border-radius: 5px; /* Coins arrondis */
-    font-weight: bold; /* Texte en gras */
-    transition: background-color 0.3s ease; /* Transition de couleur au survol */
-    cursor: pointer; /* Curseur pointeur au survol */
+.button-style {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+    text-decoration: none;
+    display: inline-block;
 }
 
-#contact button:hover {
-    background-color: #005885; /* Couleur de fond au survol */
+
+.button-style:hover {
+    background-color: #055d8c;
+    transform: scale(1.05);
 }
 
 
-
-
-/* Ajoutez d'autres styles CSS au besoin */
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
+.button-style:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px #0077b5;
 }
 
-/* Styles spécifiques à la section "Contact" */
-#contact {
-    background-color: #eee;
-    padding: 20px;
+
+.button-style:active {
+    transform: scale(0.95);
 }
 
-#contact h2 {
-    color: #333;
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fefee5;
+    color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
-#contact a {
-    color: #0077b5;
+#back-to-top i {
+    display: flex;
+    font-size: 36px;
+    justify-content: center;
+    padding: 10px;
 }
 
-/* Ajoutez ici d'autres styles pour personnaliser davantage votre page */
+.arrow-square {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* Styles pour la mise en page responsive */
-@media (max-width: 768px) {
-    /* Styles pour les écrans de taille moyenne */
+@media only screen and (max-width: 768px) {
     nav ul li {
-        margin-right: 10px;
+        display: block;
+        text-align: center;
+        margin: 10px 0;
     }
-    
-    main {
-        padding: 10px;
+
+    p {
+        font-size: 18px;
     }
-    
-    /* Ajoutez d'autres styles pour les écrans de taille moyenne si nécessaire */
+
+    .portfolio-item {
+        flex: 0 1 100%;
+    }
 }
 
 @media (max-width: 480px) {
-    /* Styles pour les petits écrans (smartphones) */
-    nav ul li {
-        display: block;
-        margin-right: 0;
-        margin-bottom: 10px;
+    p {
+        font-size: 16px;
     }
-    
-    main {
-        padding: 10px;
+
+    .portfolio-item {
+        flex: 0 1 100%;
     }
-    
-    /* Ajoutez d'autres styles pour les petits écrans si nécessaire */
+
+    section {
+        margin: 0;
+    }
 }
